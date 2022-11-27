@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Random A-Z</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="" />
+</head>
+<body>
+  <center>
+    <div id="display">-</div>
+    <button id="draw" onclick="draw_click()" class="input">Draw</button>
+    <div class="input">
+      <input type="checkbox" id="repeat" />
+      <label for="repeat">Repeat?</label>
+    </div>
+  </center>
+</body>
+
+<style>
+  #display {
+    font-size: 50vmin;
+  }
+
+  .input {
+    font-size: 10vmin;
+  }
+
+  input {
+    width: 5vmin;
+    height: 5vmin;
+  }
+</style>
+
+<script>
+  var bag;
+  function reset()
+  {
+    bag = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+  }
+  function draw_click()
+  {
+    let index = Math.floor(Math.random() * bag.length);
+    let value = bag[index];
+    if (!repeat.checked)
+      bag.splice(index, 1);
+    display.textContent = value;
+    if (bag.length == 0)
+      draw.disabled = true;
+  }
+  reset();
+</script>
+
+</html>
